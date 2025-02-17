@@ -1,11 +1,31 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["fourhoi.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fourhoi.com",
+        port: "",
+        pathname: "**",
+      },
+    ],
   },
   reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*{/}?",
+        headers: [
+          {
+            key: "X-Accel-Buffering",
+            value: "no",
+          },
+        ],
+      },
+    ];
   },
 };
 
