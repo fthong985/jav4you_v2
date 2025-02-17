@@ -3,7 +3,6 @@ import { getRecomms } from "@/app/services/recomms";
 import ThumbnailContainer, { OnErrorThumnailTypes } from "./ThumbnailContainer";
 import { formatDuration } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import SkeletonThumnail from "./SkeletonThumnail";
 import { ThumbnailSkeletonSmall } from "./SkeletonPlayer";
 
 type RecommsTypes = {
@@ -39,10 +38,6 @@ const recommsInit = {
 };
 
 export default function Recomms({ code }: { code: string }) {
-  // const recomms: RecommsTypes | OnErrorThumnailTypes = await getRecomms(
-  //   code.toLowerCase()
-  // );
-
   const [recomms, setRecomms] = useState<RecommsTypes | OnErrorThumnailTypes>(
     recommsInit
   );
@@ -58,7 +53,9 @@ export default function Recomms({ code }: { code: string }) {
       }
     }
     getData();
-  }, []);
+  }, [code]);
+
+  if (isLoading) return <ThumbnailSkeletonSmall />;
 
   const hasNoRes =
     "status" in recomms && (recomms.status === 404 || recomms.status === 500);
@@ -77,8 +74,6 @@ export default function Recomms({ code }: { code: string }) {
       isUncensored: items.values.is_uncensored_leak,
     };
   });
-
-  if (isLoading) return <ThumbnailSkeletonSmall />;
 
   const data = {
     totalPageResults: 0,

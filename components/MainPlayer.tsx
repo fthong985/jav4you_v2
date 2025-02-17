@@ -46,10 +46,11 @@ export default function MainPlayer({ url }: { url: string }) {
     async function getData() {
       try {
         const videoRes: GetVideoTypes = await getVideo(url);
+        setVideo(videoRes);
+
         const adsDataRes = await getAdsLinkPlayer();
         const proxyRes = await getM3u8Proxy();
 
-        setVideo(videoRes);
         setAdsData(adsDataRes);
         setProxy(proxyRes);
       } finally {
@@ -58,7 +59,9 @@ export default function MainPlayer({ url }: { url: string }) {
     }
 
     getData();
-  }, []);
+  }, [url]);
+
+  if (isLoading) return <SkeletonPlayer />;
 
   const hasNoRes =
     "status" in video && (video.status === 404 || video.status === 500);
@@ -66,8 +69,6 @@ export default function MainPlayer({ url }: { url: string }) {
   const hasError = "status" in video;
 
   if (hasNoRes || hasError) return <NoResult query={`Video`} />;
-
-  if (isLoading) return <SkeletonPlayer />;
 
   const thumbnail = {
     image: `https://fourhoi.com/${video.description.code.toLowerCase()}/cover-t.jpg`,
