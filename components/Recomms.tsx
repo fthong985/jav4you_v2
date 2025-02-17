@@ -1,6 +1,10 @@
+"use client";
 import { getRecomms } from "@/app/services/recomms";
 import ThumbnailContainer, { OnErrorThumnailTypes } from "./ThumbnailContainer";
 import { formatDuration } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import SkeletonThumnail from "./SkeletonThumnail";
+import { ThumbnailSkeletonSmall } from "./SkeletonPlayer";
 
 type RecommsTypes = {
   code: number;
@@ -21,10 +25,40 @@ type RecommsValuesTypes = {
   title_en: string;
 };
 
-export default async function Recomms({ code }: { code: string }) {
-  const recomms: RecommsTypes | OnErrorThumnailTypes = await getRecomms(
-    code.toLowerCase()
+const recommsInit = {
+  code: 0,
+  recomms: [],
+  // values: {
+  //   dm: "",
+  //   duration: "",
+  //   has_chinese_subtitle: "",
+  //   has_english_subtitle: false,
+  //   is_uncensored_leak: false,
+  //   title_en: "",
+  // },
+};
+
+export default function Recomms({ code }: { code: string }) {
+  // const recomms: RecommsTypes | OnErrorThumnailTypes = await getRecomms(
+  //   code.toLowerCase()
+  // );
+
+  const [recomms, setRecomms] = useState<RecommsTypes | OnErrorThumnailTypes>(
+    recommsInit
   );
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const recommsRes = await getRecomms(code.toLowerCase());
+        setRecomms(recommsRes);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getData();
+  }, []);
 
   const hasNoRes =
     "status" in recomms && (recomms.status === 404 || recomms.status === 500);
@@ -43,6 +77,8 @@ export default async function Recomms({ code }: { code: string }) {
       isUncensored: items.values.is_uncensored_leak,
     };
   });
+
+  if (isLoading) return <ThumbnailSkeletonSmall />;
 
   const data = {
     totalPageResults: 0,
