@@ -120,7 +120,7 @@ export default function Player({
       <div className="px-2 grid grid-cols-2  gap-4 my-2 sm:px-8 lg:px-16 xl:20 lg:my-4">
         <div className="border-main border text-white grid grid-cols-3 rounded-sm">
           <button
-            className="p-1 flex items-center justify-center"
+            className="p-1 flex items-center justify-center active:text-[14px]"
             onClick={seek10mRewind}
           >
             <ChevronsLeft size={20} />
@@ -128,7 +128,7 @@ export default function Player({
           </button>
 
           <button
-            className="border-x border-main p-1 flex items-center justify-center"
+            className="border-x border-main p-1 flex items-center justify-center active:text-[14px]"
             onClick={seek1mRewind}
           >
             <ChevronLeft size={15} />
@@ -136,7 +136,7 @@ export default function Player({
           </button>
 
           <button
-            className="p-1 flex items-center justify-center"
+            className="p-1 flex items-center justify-center active:text-[14px]"
             onClick={seek10sRewind}
           >
             <ChevronLeft size={15} />
@@ -146,7 +146,7 @@ export default function Player({
 
         <div className="border-main border  text-white grid grid-cols-3 rounded-sm ">
           <button
-            className="p-1  flex items-center justify-center"
+            className="p-1  flex items-center justify-center active:text-[14px]"
             onClick={seek10sForward}
           >
             10s
@@ -154,7 +154,7 @@ export default function Player({
           </button>
 
           <button
-            className="border-x border-main p-1 flex items-center justify-center"
+            className="border-x border-main p-1 flex items-center justify-center active:text-[14px]"
             onClick={seek1mForward}
           >
             1m
@@ -162,7 +162,7 @@ export default function Player({
           </button>
 
           <button
-            className="p-1 flex items-center justify-center"
+            className="p-1 flex items-center justify-center active:text-[14px]"
             onClick={seek10mForward}
           >
             10m
