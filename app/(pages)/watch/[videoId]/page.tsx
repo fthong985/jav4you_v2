@@ -1,11 +1,7 @@
 import { getVideo } from "@/app/services/scrapeDef";
+import MainPlayer from "@/components/MainPlayer";
 import SkeletonPlayer from "@/components/SkeletonPlayer";
 import { Suspense } from "react";
-
-import dynamic from "next/dynamic";
-const MainPlayer = dynamic(() => import("@/components/MainPlayer"), {
-  ssr: false,
-});
 
 export type VideoTypes = {
   poster: string;
@@ -28,6 +24,8 @@ export type DescriptionTypes = {
 };
 
 type GetVideoTypes = VideoTypes | { status: number; message: string };
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
