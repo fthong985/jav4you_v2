@@ -1,6 +1,11 @@
 // import { Logo } from "@/app/page";
 import { List, Paragraph } from "@/components/RootInfo";
+import { Metadata } from "next";
 import { ReactNode } from "react";
+
+export const metadata: Metadata = {
+  title: "Privacy and Policy",
+};
 
 export default function page() {
   return (

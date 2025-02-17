@@ -7,26 +7,7 @@ import AddToWatchLaterBtn from "./AddToWatchLaterBtn";
 import Recomms from "./Recomms";
 import { getAdsLinkPlayer, getM3u8Proxy } from "@/app/services/services";
 import Player from "./Player";
-
-export type VideoTypes = {
-  poster: string;
-  title: string;
-  src: string;
-  synopsis: string;
-  description: DescriptionTypes;
-};
-
-export type DescriptionTypes = {
-  releaseDate: string;
-  code: string;
-  title: string;
-  actress: string[];
-  genre: string[];
-  series: string;
-  maker: string;
-  director: string;
-  label: string;
-};
+import { VideoTypes } from "@/app/(pages)/watch/[videoId]/page";
 
 export type GetVideoTypes = VideoTypes | OnErrorThumnailTypes;
 
@@ -59,6 +40,7 @@ export default async function MainPlayer({ url }: { url: string }) {
         adsLink={adsData}
         videoSrc={video.src}
         proxy={proxy}
+        poster={video.poster}
       />
 
       <div className="px-2 flex flex-col gap-2">

@@ -55,12 +55,14 @@ export default function ThumbnailContainer({
   fromRedirect?: boolean | undefined;
   isSaveVideos?: boolean;
 }) {
+  const saveLaterProvider = useSaveLaterProvider();
   const [active, setActive] = useState<string>("");
   const router = useRouter();
   const previewRef = useRef<HTMLVideoElement>(null);
   const width = useDetectResolution();
+
   const { isEdit, setSelectDelete, handleDelete } = isSaveVideos
-    ? useSaveLaterProvider()
+    ? saveLaterProvider
     : { isEdit: false, setSelectDelete: () => {}, handleDelete: () => {} };
 
   useEffect(() => {

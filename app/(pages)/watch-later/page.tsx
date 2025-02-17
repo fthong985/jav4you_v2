@@ -1,9 +1,14 @@
 import dynamic from "next/dynamic";
 import OnEditButton from "./OnEditButton";
 import { SaveLaterProvider } from "@/context/SaveLaterProvider";
+import { Metadata } from "next";
 const SaveVideos = dynamic(() => import("@/components/SaveVideos"), {
   ssr: false,
 });
+
+export const metadata: Metadata = {
+  title: "Saved Videos",
+};
 
 export default function page() {
   return (

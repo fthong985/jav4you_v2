@@ -15,7 +15,10 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Jav4You",
+  title: {
+    default: "Jav4You",
+    template: "%s | Jav4You",
+  },
   description:
     "Jav4You is a free online platform that allows users to watch and download JAV videos directly from the internet. The website acts as a search engine for video, Once you find the JAV code you want, Jav4You will provides the video and option to download in different quality.",
   openGraph: {
@@ -58,6 +61,11 @@ export default function RootLayout({
             gtag('config', 'G-TMHQ1NK0TP');
           `}
         </Script>
+
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
       </head>
       <body
         className={`${roboto.className} antialiased bg-[#161618] flex flex-col min-[450px]:px-2 sm:max-w-screen-md md:mx-auto lg:max-w-screen-lg lg:px-4 xl:max-w-screen-xl 2xl:max-w-screen-2xl`}
@@ -70,6 +78,12 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+
+        <script
+          async
+          data-cfasync="false"
+          src="//temporarilycomprehensivehedwig.com/7a7dd05536e3b1101883ef272c90bfb7/invoke.js"
+        ></script>
       </body>
     </html>
   );

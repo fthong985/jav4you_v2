@@ -4,9 +4,13 @@ import NoResult from "@/components/NoResult";
 import Image from "next/image";
 import { monthYear } from "@/lib/navsList";
 import { Suspense } from "react";
-import SkeletonThumnail from "@/components/SkeletonThumnail";
 import Link from "next/link";
-import { cleanQueryString } from "@/lib/utils";
+import { Metadata } from "next";
+import SkeletonGenre from "@/components/SkeletonGenre";
+
+export const metadata: Metadata = {
+  title: "Actress Ranking",
+};
 
 export type RankingTypes = {
   image: string;
@@ -14,27 +18,17 @@ export type RankingTypes = {
   rank: string;
 };
 
-export default function page({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const urlSet =
-    searchParams?.page || searchParams.sortby || searchParams?.filters
-      ? `?filters=${searchParams.filters}&sortby=${searchParams.sortby}&page=${searchParams.page}`
-      : "";
-  const url = cleanQueryString(urlSet);
-
+export default function page() {
   return (
-    <Suspense fallback={<SkeletonThumnail />}>
-      <RankingList url={url} />;
+    <Suspense fallback={<SkeletonGenre />}>
+      <RankingList />;
     </Suspense>
   );
 }
 
-async function RankingList({ url }: { url: string }) {
+async function RankingList() {
   const rankingList: RankingTypes[] | OnErrorThumnailTypes =
-    await getActressRanking(url);
+    await getActressRanking();
 
   const hasNoRes =
     "status" in rankingList &&

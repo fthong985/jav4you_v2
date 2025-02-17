@@ -9,8 +9,8 @@ import {
 } from "react";
 
 const SaveLaterContext = createContext({
-  selectDelete: [] as any[],
-  setSelectDelete: (value: any) => {},
+  selectDelete: [] as string[],
+  setSelectDelete: (() => {}) as React.Dispatch<React.SetStateAction<string[]>>,
   isEdit: false,
   handleOnEdit: () => {},
   handleDelete: () => {},

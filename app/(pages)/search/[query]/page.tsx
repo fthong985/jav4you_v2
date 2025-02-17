@@ -12,7 +12,7 @@ export default async function page({
   return (
     <Suspense
       fallback={<SkeletonThumnail />}
-      key={searchParams?.filters || searchParams?.sortby}
+      key={searchParams?.filters || searchParams?.sortby || searchParams?.page}
     >
       <GetThumbnail
         query={params.query}

@@ -1,5 +1,10 @@
 // import { Logo } from "@/app/page";
 import { List, Paragraph, Title } from "@/components/RootInfo";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "DMCA",
+};
 
 export default function page() {
   return (

@@ -1,6 +1,34 @@
+import { getActressInfo } from "@/app/services/scrapeDef";
 import GetThumbnail, { SearchParamsTypes } from "@/components/GetThumbnail";
-import SkeletonThumnail from "@/components/SkeletonThumnail";
+import SkeletonGenre from "@/components/SkeletonGenre";
 import { Suspense } from "react";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { query: string };
+}) {
+  const res = await getActressInfo(`${params.query.toLowerCase()}`);
+
+  const title = params.query;
+
+  const hasNoRes =
+    "status" in res && (res.status === 404 || res.status === 500);
+
+  const hasError = "status" in res;
+
+  if (hasNoRes || hasError) return;
+
+  return {
+    title: decodeURIComponent(title),
+    description: res.info,
+    openGraph: {
+      image: {
+        url: res.image,
+      },
+    },
+  };
+}
 
 export default function page({
   params,
@@ -11,8 +39,8 @@ export default function page({
 }) {
   return (
     <Suspense
-      fallback={<SkeletonThumnail />}
-      key={searchParams?.filters || searchParams?.sortby}
+      fallback={<SkeletonGenre />}
+      key={searchParams?.filters || searchParams?.sortby || searchParams?.page}
     >
       <GetThumbnail
         query={params.query}

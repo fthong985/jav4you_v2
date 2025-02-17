@@ -7,8 +7,13 @@ import { Filter } from "@/components/QueryContainer";
 import { age, cup, debut, height } from "@/lib/filterList";
 import Link from "next/link";
 import { Suspense } from "react";
-import SkeletonThumnail from "@/components/SkeletonThumnail";
 import { cleanQueryString } from "@/lib/utils";
+import { Metadata } from "next";
+import SkeletonGenre from "@/components/SkeletonGenre";
+
+export const metadata: Metadata = {
+  title: "Actress",
+};
 
 type ActressListTypes =
   | {
@@ -41,7 +46,7 @@ export default async function page({
   const url = cleanQueryString(urlSet);
 
   return (
-    <Suspense fallback={<SkeletonThumnail />}>
+    <Suspense fallback={<SkeletonGenre />} key={urlSet}>
       <ActressList url={url} />;
     </Suspense>
   );

@@ -9,7 +9,7 @@ import * as cheerio from "cheerio";
 import { GenreListTypes } from "../(pages)/genres/page";
 import { Results } from "../(pages)/actresses/page";
 import { RankingTypes } from "../(pages)/actresses/ranking/page";
-import { DescriptionTypes, VideoTypes } from "@/components/MainPlayer";
+import { DescriptionTypes, VideoTypes } from "../(pages)/watch/[videoId]/page";
 
 export type ActressTypes = {
   image: string;
@@ -24,7 +24,7 @@ export async function getThumbnail(params: string) {
 
     // Fetch HTML content using native fetch
     const response = await fetch(url, {
-      next: { revalidate: 43200 }, // Cache for 24 hours (86,400 seconds)
+      next: { revalidate: 43200 },
     });
 
     // Check if the response is OK
@@ -340,9 +340,9 @@ export async function getActressList(endpoint: string = "") {
   }
 }
 
-export async function getActressRanking(endpoint: string) {
+export async function getActressRanking() {
   try {
-    const url = `https://missav.ws/en/actresses/ranking${endpoint}`;
+    const url = `https://missav.ws/en/actresses/ranking`;
 
     // Fetch HTML content using native fetch
     const response = await fetch(url, {

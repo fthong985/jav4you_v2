@@ -47,7 +47,7 @@ export const watchJav = [
   },
   {
     title: "Most viewed by week",
-    destination: endpoint("most_viwed_by_week", "weekly-hot"),
+    destination: endpoint("most_viewed_by_week", "weekly-hot"),
   },
   {
     title: "Most viewed by month",
@@ -85,7 +85,7 @@ export const amatuer = [
 export const uncensored = [
   {
     title: "Uncensored leak",
-    destination: endpoint("unsensored_leak", "uncensored-leak"),
+    destination: endpoint("uncensored_leak", "uncensored-leak"),
   },
   {
     title: "FC2",

@@ -18,8 +18,9 @@ export default async function page() {
       </div>
 
       <div className="mt-10 flex flex-col gap-[80px] xl:gap-[100px] 2xl:mt-16">
-        <NewRelease />
         <RecentUpdate />
+        <NewRelease />
+        <div id="container-7a7dd05536e3b1101883ef272c90bfb7"></div>
         <Trending />
         <Uncensored />
       </div>
