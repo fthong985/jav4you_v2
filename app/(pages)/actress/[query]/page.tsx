@@ -1,4 +1,3 @@
-import { getActressInfo } from "@/app/services/scrapeDef";
 import GetThumbnail, { SearchParamsTypes } from "@/components/GetThumbnail";
 import SkeletonGenre from "@/components/SkeletonGenre";
 import { Suspense } from "react";
@@ -8,25 +7,9 @@ export async function generateMetadata({
 }: {
   params: { query: string };
 }) {
-  const res = await getActressInfo(`${params.query.toLowerCase()}`);
-
-  const title = params.query;
-
-  const hasNoRes =
-    "status" in res && (res.status === 404 || res.status === 500);
-
-  const hasError = "status" in res;
-
-  if (hasNoRes || hasError) return;
-
   return {
-    title: decodeURIComponent(title),
-    description: res.info,
-    openGraph: {
-      image: {
-        url: res.image,
-      },
-    },
+    title: params.query,
+    description: "Get Actress Info",
   };
 }
 

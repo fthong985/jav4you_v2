@@ -10,6 +10,7 @@ import SkeletonGenre from "@/components/SkeletonGenre";
 
 export const metadata: Metadata = {
   title: "Actress Ranking",
+  description: "List of actress Ranking this month",
 };
 
 export type RankingTypes = {

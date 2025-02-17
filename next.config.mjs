@@ -14,9 +14,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  experimental: {
-    streamingMetadata: true,
-  },
 };
 
 export default nextConfig;
