@@ -1,9 +1,9 @@
 import { getVideo } from "@/app/services/scrapeDef";
 import SkeletonPlayer from "@/components/SkeletonPlayer";
 import { Suspense } from "react";
-import dynamic from "next/dynamic";
 
-const MainPlayer = dynamic(() => import("@/components/SkeletonPlayer"), {
+import dynamic from "next/dynamic";
+const MainPlayer = dynamic(() => import("@/components/MainPlayer"), {
   ssr: false,
 });
 
