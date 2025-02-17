@@ -8,9 +8,28 @@ import AddToWatchLaterBtn from "./AddToWatchLaterBtn";
 import Recomms from "./Recomms";
 import { getAdsLinkPlayer, getM3u8Proxy } from "@/app/services/services";
 import Player from "./Player";
-import { VideoTypes } from "@/app/(pages)/watch/[videoId]/page";
 import { useEffect, useState } from "react";
 import SkeletonPlayer from "./SkeletonPlayer";
+
+export type VideoTypes = {
+  poster: string;
+  title: string;
+  src: string;
+  synopsis: string;
+  description: DescriptionTypes;
+};
+
+export type DescriptionTypes = {
+  releaseDate: string;
+  code: string;
+  title: string;
+  actress: string[];
+  genre: string[];
+  series: string;
+  maker: string;
+  director: string;
+  label: string;
+};
 
 export type GetVideoTypes = VideoTypes | OnErrorThumnailTypes;
 

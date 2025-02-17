@@ -9,7 +9,7 @@ import * as cheerio from "cheerio";
 import { GenreListTypes } from "../(pages)/genres/page";
 import { Results } from "../(pages)/actresses/page";
 import { RankingTypes } from "../(pages)/actresses/ranking/page";
-import { DescriptionTypes, VideoTypes } from "../(pages)/watch/[videoId]/page";
+import { DescriptionTypes, VideoTypes } from "@/components/MainPlayer";
 
 export type ActressTypes = {
   image: string;
