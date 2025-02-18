@@ -50,6 +50,7 @@ export default function NavsHeader() {
             className="absolute"
             sizes="(max-width: 300px) 100vw, (max-width: 450px) 50vw, 800px"
             priority
+            unoptimized
           />
         </div>
       </Link>
