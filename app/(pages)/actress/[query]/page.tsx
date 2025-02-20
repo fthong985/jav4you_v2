@@ -8,7 +8,7 @@ export async function generateMetadata({
   params: { query: string };
 }) {
   return {
-    title: params.query,
+    title: decodeURIComponent(params.query),
     description: "Get Actress Info",
   };
 }
@@ -23,7 +23,7 @@ export default function page({
   return (
     <Suspense
       fallback={<SkeletonGenre />}
-      key={searchParams?.filters || searchParams?.sortby || searchParams?.page}
+      key={searchParams?.page || searchParams?.filters || searchParams?.sortby}
     >
       <GetThumbnail
         query={params.query}

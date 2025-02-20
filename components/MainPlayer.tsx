@@ -114,15 +114,19 @@ export default function MainPlayer({ url }: { url: string }) {
         </h1>
 
         <div>
-          <h4 className="text-main_light">Description:</h4>
+          {video?.synopsis && (
+            <div>
+              <h4 className="text-main_light">Description:</h4>
 
-          <div className="text-[#bababc] leading-tight max-h-[90px] line-clamp-4 overflow-y-auto text-sm lg:text-base">
-            {video.synopsis}
-          </div>
+              <div className="text-[#bababc] leading-tight max-h-[90px] line-clamp-4 overflow-y-auto text-sm lg:text-base">
+                {video.synopsis}
+              </div>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-2 lg:gap-3 mt-3">
             <AddToWatchLaterBtn data={thumbnail} />
-            <DownloadSection src={video.src} />
+            <DownloadSection code={video.description.code} src={video.src} />
           </div>
 
           <div className="border border-gray-500 opacity-15 my-5"></div>
