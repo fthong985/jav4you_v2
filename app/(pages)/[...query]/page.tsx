@@ -37,7 +37,7 @@ export default async function page({
   return (
     <Suspense
       fallback={<SkeletonThumnail />}
-      key={searchParams?.page || searchParams?.filters || searchParams?.sortby}
+      key={`${query} ${searchParams?.page} ${searchParams?.filters} ${searchParams?.sortby}`}
     >
       <GetQueried query={query} title={title} searchParams={searchParams} />;
     </Suspense>
