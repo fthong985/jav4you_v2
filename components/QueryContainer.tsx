@@ -194,9 +194,9 @@ export function Filter({
     function onSelectFilter() {
       if (typeof activeFilter === "string") return;
       const searchParams = new URLSearchParams(window.location.search);
+      searchParams.delete("page");
 
       searchParams.delete(queryName);
-      searchParams.delete("page");
       searchParams.append(queryName, activeFilter.query); // Remove only the 'filter' query param
 
       const newQueryString = searchParams.toString();
@@ -207,7 +207,7 @@ export function Filter({
 
     if (activeFilter === "string") return;
     onSelectFilter();
-  }, []);
+  }, [activeFilter]);
 
   function onFilterSetToAll() {
     const searchParams = new URLSearchParams(window.location.search);
