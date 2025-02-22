@@ -1,27 +1,20 @@
 "use client";
 
 import { hasData } from "./HomeContents";
-
 import ThumbnailContainer, {
   OnErrorThumnailTypes,
   ThumbnailTypes,
 } from "./ThumbnailContainer";
-
 import {
   useParams,
   usePathname,
   useRouter,
   useSearchParams,
 } from "next/navigation";
-
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-
 import { useEffect, useState } from "react";
-
 import { filter, sortBy } from "@/lib/filterList";
-
 import { ChevronDown, ChevronUp } from "lucide-react";
-
 import { ActressTypes } from "@/app/services/scrapeDef";
 import Image from "next/image";
 import Link from "next/link";
@@ -184,44 +177,48 @@ export function Filter({
   const router = useRouter();
   const pathname = usePathname();
 
+  // Set the active filter based on the current query
   useEffect(() => {
     if (!query) return;
-    const findEqual = data.filter((val) => val.query === query)[0];
-    setActiveFilter(findEqual);
+    const findEqual = data.find((val) => val.query === query);
+    if (findEqual) {
+      setActiveFilter(findEqual);
+    }
   }, [query, data]);
 
-  useEffect(() => {
-    function onSelectFilter() {
-      if (typeof activeFilter === "string") return;
-      const searchParams = new URLSearchParams(window.location.search);
-      searchParams.delete("page");
-
-      searchParams.delete(queryName);
-      searchParams.append(queryName, activeFilter.query); // Remove only the 'filter' query param
-
-      const newQueryString = searchParams.toString();
-      router.replace(
-        newQueryString ? `${pathname}?${newQueryString}` : pathname
-      );
-    }
-
-    if (activeFilter === "string") return;
-    onSelectFilter();
-  }, [activeFilter]);
-
-  function onFilterSetToAll() {
+  // Handle filter selection
+  const onSelectFilter = (selectedFilter: { name: string; query: string }) => {
     const searchParams = new URLSearchParams(window.location.search);
-    searchParams.delete(queryName); // Remove only the 'filter' query param
+
+    // Update the filter query parameter
+    searchParams.set(queryName, selectedFilter.query);
+
+    // Remove the 'page' parameter only when a filter is selected
+    searchParams.delete("page");
 
     const newQueryString = searchParams.toString();
     router.replace(newQueryString ? `${pathname}?${newQueryString}` : pathname);
-  }
+  };
+
+  // Handle resetting the filter to "All"
+  const onFilterSetToAll = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+
+    // Remove the filter query parameter
+    searchParams.delete(queryName);
+
+    // Remove the 'page' parameter only when resetting the filter
+    searchParams.delete("page");
+
+    const newQueryString = searchParams.toString();
+    router.replace(newQueryString ? `${pathname}?${newQueryString}` : pathname);
+  };
 
   return (
     <Popover open={isOpenPopOver} onOpenChange={setPopOverState}>
       <PopoverTrigger
         onClick={() => setPopOverState((c) => !c)}
-        className={`flex  gap-[2px] font-semibold tracking-wider ${
+        className={`flex gap-[2px] font-semibold tracking-wider ${
           isOpenPopOver ? "text-main" : "text-white"
         }`}
       >
@@ -253,18 +250,15 @@ export function Filter({
       <PopoverContent
         align="start"
         className="w-30 p-1 flex flex-col gap-2 bg-[#e5e9f0] z-[999999] border-0 px-0 max-h-96 overflow-y-auto"
-        // className=" w-fit p-1 bg-[#e5e9f0] z-[999999] px-0 border-0 min-w-[225px] flex flex-col gap-1"
       >
         <button
           className={`text-gray-900 text-start px-3 ${
             typeof activeFilter === "string" && "bg-light"
           }`}
           onClick={() => {
-            const searchParams = new URLSearchParams(window.location.search);
             setActiveFilter(initialActive);
             setPopOverState(false);
             onFilterSetToAll();
-            searchParams.delete("page");
           }}
         >
           {initialActive}
@@ -279,12 +273,9 @@ export function Filter({
               }`}
               key={items.query}
               onClick={() => {
-                const searchParams = new URLSearchParams(
-                  window.location.search
-                );
                 setActiveFilter(items);
                 setPopOverState(false);
-                searchParams.delete("");
+                onSelectFilter(items); // Trigger filter selection logic
               }}
             >
               {items.name}

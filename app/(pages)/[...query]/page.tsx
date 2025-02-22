@@ -9,6 +9,7 @@ import SkeletonThumnail from "@/components/SkeletonThumnail";
 import { getThumbnail } from "../../services/scrapeDef";
 import { SearchParamsTypes } from "@/components/GetThumbnail";
 import { searchParamsSet } from "@/lib/filterList";
+import { cleanQueryString } from "@/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -34,11 +35,15 @@ export default async function page({
 
   if (!query) redirect("/");
 
+  const urlSet =
+    searchParams?.page || searchParams?.filters || searchParams?.sortby
+      ? `?page=${searchParams.page}&filters=${searchParams.filters}&sort=${searchParams.sortby}`
+      : "";
+
+  const url = cleanQueryString(urlSet);
+
   return (
-    <Suspense
-      fallback={<SkeletonThumnail />}
-      key={searchParams?.filters || searchParams?.sortby || searchParams?.page}
-    >
+    <Suspense fallback={<SkeletonThumnail />} key={url}>
       <GetQueried query={query} title={title} searchParams={searchParams} />;
     </Suspense>
   );
