@@ -24,7 +24,7 @@ export async function getThumbnail(params: string) {
 
     // Fetch HTML content using native fetch
     const response = await fetch(url, {
-      next: { revalidate: 43200 },
+      next: { revalidate: 28800 },
     });
 
     // Check if the response is OK

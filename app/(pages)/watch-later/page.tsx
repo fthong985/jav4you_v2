@@ -15,7 +15,7 @@ export default function page() {
     <SaveLaterProvider>
       <div className="flex flex-col mt-5 px-2 gap-2">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl text-main mb-2">Save Videos</h1>
+          <h1 className="text-2xl text-main mb-2">Saved Video&apos;s</h1>
           <OnEditButton />
         </div>
 

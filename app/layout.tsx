@@ -58,6 +58,7 @@ export default function RootLayout({
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -83,6 +84,7 @@ export default function RootLayout({
           <main className="flex-1 w-full h-fit flex flex-col gap-2">
             {children}
           </main>
+
           <Footer />
         </div>
       </body>

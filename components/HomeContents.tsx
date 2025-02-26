@@ -47,7 +47,7 @@ export function Uncensored() {
 }
 
 async function FetchTrending() {
-  const path = "today-hot&sortby=views";
+  const path = "today-hot";
   const getTrending: ThumbnailTypes | OnErrorThumnailTypes = await getThumbnail(
     `/today-hot?sort=views`
   );
