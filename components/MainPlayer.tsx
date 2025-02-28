@@ -52,10 +52,6 @@ const videoInit = {
 };
 
 export default function MainPlayer({ url }: { url: string }) {
-  // const video: GetVideoTypes = await getVideo(url);
-  // const adsData = await getAdsLinkPlayer();
-  // const proxy = await getM3u8Proxy();
-
   const [video, setVideo] = useState<GetVideoTypes>(videoInit);
   const [adsData, setAdsData] = useState<string>("");
   const [proxy, setProxy] = useState<string>("");

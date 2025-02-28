@@ -51,7 +51,7 @@ export default function RootLayout({
 }>) {
   const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         {/* Google Analytics Script */}
         <Script
@@ -76,7 +76,10 @@ export default function RootLayout({
         <PopAdsScript />
       </head>
       <body className={`${roboto.className} antialiased bg-[#161618] `}>
-        <div className=" flex flex-col min-[450px]:px-2 sm:max-w-screen-md md:mx-auto lg:max-w-screen-lg lg:px-4 xl:max-w-screen-xl 2xl:max-w-screen-2xl">
+        <div
+          className=" flex flex-col min-[450px]:px-2 sm:max-w-screen-md md:mx-auto lg:max-w-screen-lg lg:px-4 xl:max-w-screen-xl 2xl:max-w-screen-2xl"
+          id="main"
+        >
           <HeaderProvider>
             <Header />
           </HeaderProvider>

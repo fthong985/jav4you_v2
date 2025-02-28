@@ -33,7 +33,7 @@ export default function PaginateSelect({ totalPage }: { totalPage: number }) {
     if (pageNumber < 1 || pageNumber > totalPage) return;
     const params = new URLSearchParams(window.location.search);
     params.set("page", pageNumber.toString());
-    router.replace(`${pathname}?${params.toString()}`);
+    router.push(`${pathname}?${params.toString()}`);
   }
 
   function onInputPage(event: React.FormEvent<HTMLFormElement>) {
