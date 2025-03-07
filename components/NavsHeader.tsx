@@ -93,6 +93,14 @@ function NavsHeaderDesktop() {
   return (
     <div className="hidden xl:flex gap-5 w-full justify-evenly">
       <Link
+        href={"/"}
+        className="text-[#e5e9f0] font-semibold tracking-wider flex justify-between gap-8 hover:text-main"
+        onClick={() => setActive(0)}
+      >
+        Home
+      </Link>
+
+      <Link
         href={"/english-subtitle?q=english-subtitle"}
         className="text-[#e5e9f0] font-semibold tracking-wider flex justify-between gap-8 hover:text-main"
         onClick={() => setActive(0)}
@@ -179,6 +187,14 @@ function NavsHeaderMobile() {
         className="w-40 p-1 bg-[#e5e9f0] z-[999999] px-0 border-0 min-w-[225px]"
         ref={popOverRef}
       >
+        <Link
+          href={"/"}
+          className="px-4 py-2 text-[#2e3440] font-semibold tracking-wider w-full block"
+          onClick={() => setIsModalOpen(false)}
+        >
+          Home
+        </Link>
+
         <Link
           href={"/english-subtitle?q=english-subtitle"}
           className="px-4 py-2 text-[#2e3440] font-semibold tracking-wider w-full block"
