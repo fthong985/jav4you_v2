@@ -173,7 +173,6 @@ export default function ThumbnailContainer({
                           fill
                           className="absolute object-cover "
                           sizes="(max-width: 300px) 100vw, (max-width: 450px) 50vw, 800px"
-                          unoptimized
                         />
 
                         {items.duration !== "0" && (

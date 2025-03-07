@@ -124,7 +124,9 @@ export async function getThumbnail(params: string) {
       // Push the extracted data into the array
       if (image && duration && destination) {
         data.push({
-          image: image,
+          image: `https://fourhoi.com/${
+            destination[destination.length - 1]
+          }/cover-n.jpg`,
           duration: duration,
           code: destination[destination.length - 1],
           title,
