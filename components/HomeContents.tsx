@@ -141,6 +141,8 @@ async function FetchRecentUpdate() {
   const getRecentUpdate: ThumbnailTypes | OnErrorThumnailTypes =
     await getThumbnail("/new?sort=published_at");
 
+  console.log(getRecentUpdate);
+
   if (hasData(getRecentUpdate)) return;
 
   return (
