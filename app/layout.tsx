@@ -7,11 +7,11 @@ import Header from "@/components/Header";
 import Script from "next/script";
 import { HeaderProvider } from "@/context/HeaderProvider";
 import Footer from "@/components/Footer";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
-const PopAdsScript = dynamic(() => import("@/components/PopAdsScript"), {
-  ssr: false,
-});
+// const PopAdsScript = dynamic(() => import("@/components/PopAdsScript"), {
+//   ssr: false,
+// });
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -73,7 +73,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
 
-        <PopAdsScript />
+        {/* <PopAdsScript /> {"For injecting Popads network"} */}
       </head>
       <body className={`${roboto.className} antialiased bg-[#161618] `}>
         <div
