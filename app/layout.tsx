@@ -90,6 +90,18 @@ export default function RootLayout({
 
           <Footer />
         </div>
+
+        {/* Social Bar  */}
+        <Script
+          type="text/javascript"
+          src="//humpasylum.com/33/98/fd/3398fd9e1679e9434f9affe50a40da03.js"
+        ></Script>
+
+        {/* Popunder  */}
+        {/* <Script
+          type="text/javascript"
+          src="//humpasylum.com/41/ff/4a/41ff4ab2702d0ef9794debdc036b500d.js"
+        ></Script> */}
       </body>
     </html>
   );
