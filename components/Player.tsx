@@ -110,7 +110,7 @@ export default function Player({
         <MediaProvider>
           <Poster
             className="vds-poster object-cover w-full h-full"
-            src={`${proxy}fetch?url=${poster}`}
+            src={`https://goodproxy.tymgorvez.workers.dev/fetch?url=${poster}`}
             alt={`${title} poster`}
           />
         </MediaProvider>
