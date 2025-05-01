@@ -98,7 +98,8 @@ export default function Player({
       <MediaPlayer
         ref={plyrRef}
         storage="storage-key"
-        src={`${proxy}fetch?url=${videoSrc}`}
+        // src={`${proxy}fetch?url=${videoSrc}`}
+        src={`${proxy}${videoSrc}`}
         viewType="video"
         streamType="on-demand"
         logLevel="warn"
