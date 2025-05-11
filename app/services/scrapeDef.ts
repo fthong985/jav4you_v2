@@ -385,7 +385,7 @@ export async function getActressRanking() {
 export async function getVideo(code: string) {
   try {
     // Step 1: Fetch the HTML content of the page
-    const response = await fetch(`https://missav.live/dm60/en/${code}`, {});
+    const response = await fetch(`https://missav123.com/en/${code}`, {});
 
     if (response.status === 404) {
       return { status: 404, message: "Not Found." };
