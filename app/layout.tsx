@@ -92,10 +92,10 @@ export default function RootLayout({
         </div>
 
         {/* Social Bar  */}
-        {/* <Script
+        <Script
           type="text/javascript"
           src="//humpasylum.com/33/98/fd/3398fd9e1679e9434f9affe50a40da03.js"
-        ></Script> */}
+        ></Script>
 
         {/* Popunder  */}
         {/* <Script
