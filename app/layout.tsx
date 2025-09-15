@@ -94,7 +94,7 @@ export default function RootLayout({
         {/* Social Bar  */}
         <Script
           type="text/javascript"
-          src="//humpasylum.com/33/98/fd/3398fd9e1679e9434f9affe50a40da03.js"
+          src="//faciliatemate.com/33/98/fd/3398fd9e1679e9434f9affe50a40da03.js"
         ></Script>
 
         {/* Popunder  */}
