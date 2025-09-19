@@ -20,7 +20,7 @@ export type ActressTypes = {
 export async function getThumbnail(params: string) {
   try {
     // URL to fetch
-    const url = `https://missav.live/dm291/en${params}`;
+    const url = `https://missav.live/dm22/en${params}`;
     // const url = `https://missav.ws/`;
 
     // Fetch HTML content using native fetch
