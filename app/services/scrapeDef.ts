@@ -21,7 +21,7 @@ export async function getThumbnail(params: string) {
   try {
     // URL to fetch
     // const url = `https://missav.live/dm22/en${params}`;
-    const url = `https://missav.ws/dm291/en${params}`;
+    const url = `https://missav.live/dm291/en${params}`;
 
     // Fetch HTML content using native fetch
     const response = await fetch(url, {
@@ -281,7 +281,7 @@ export async function getGenre(endpoint: string) {
 
 export async function getActressList(endpoint: string = "") {
   try {
-    const url = `https://missav.live/en/actresses${endpoint}`;
+    const url = `https://missav.ws/en/actresses${endpoint}`;
 
     // Fetch HTML content using native fetch
     const response = await fetch(url, {
@@ -343,7 +343,7 @@ export async function getActressList(endpoint: string = "") {
 
 export async function getActressRanking() {
   try {
-    const url = `https://missav.live/en/actresses/ranking`;
+    const url = `https://missav.ws/en/actresses/ranking`;
 
     // Fetch HTML content using native fetch
     const response = await fetch(url, {
