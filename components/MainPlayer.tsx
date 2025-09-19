@@ -57,8 +57,6 @@ export default function MainPlayer({ url }: { url: string }) {
   const [proxy, setProxy] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  console.log(video);
-
   useEffect(() => {
     async function getData() {
       try {
