@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+
 import "./globals.css";
 
 import { Roboto } from "next/font/google";
@@ -102,6 +104,8 @@ export default function RootLayout({
           type="text/javascript"
           src="//humpasylum.com/41/ff/4a/41ff4ab2702d0ef9794debdc036b500d.js"
         ></Script> */}
+
+        <Analytics />
       </body>
     </html>
   );
